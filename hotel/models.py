@@ -18,7 +18,7 @@ class Menus(models.Model):
 
 
 class Order(models.Model):
-    table_number = models.ForeignKey(Tables, on_delete=models.CASCADE())
+    table_number = models.ForeignKey(Tables, on_delete=models.CASCADE)
     order_amount = models.FloatField()
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
