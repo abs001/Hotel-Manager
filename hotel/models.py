@@ -7,6 +7,8 @@ class Tables(models.Model):
 
 
 class MenuCategory(models.Model):
+    def __str__(self):
+        return self.category
     category = models.TextField(max_length=100)
 
 
