@@ -1,0 +1,230 @@
+  <!-- Home page -->
+    <div class="container">
+        <div>
+            <p class="lead">Table occupancy</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 62%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">62%</div>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12 display-4">
+                <div class="text-right"><span>Tables on the floor </span> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">+</button></div>
+                <hr>
+            </div>
+            <div class="col-md-3" data-toggle="modal" data-target="#makebill">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-success text-center">Table No: 1</li>
+                    <li class="list-group-item">T1-01 <span class="badge badge-success">Occupied</span></li>
+                    <li class="list-group-item">T1-02</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" data-toggle="modal" data-target="#makebill">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-success text-center">Table No: 2</li>
+                    <li class="list-group-item">T2-01 <span class="badge badge-success">Occupied</span></li>
+                    <li class="list-group-item">T2-02</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" data-toggle="modal" data-target="#makeorder">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light text-center">Table No: 3</li>
+                    <li class="list-group-item">T1-01</li>
+                    <li class="list-group-item">T1-01</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-success text-center">Table No: 4</li>
+                   <li class="list-group-item">T1-04 <span class="badge badge-success">Occupied</span></li>
+                   <li class="list-group-item">T1-04 <span class="badge badge-success">Occupied</span></li>
+                    <li class="list-group-item">T1-04</li>
+                    <li class="list-group-item">T1-04</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light text-center">Table No: 5</li>
+                    <li class="list-group-item">T1-01</li>
+                    <li class="list-group-item">T1-01</li>
+                    <li class="list-group-item">T1-01</li>
+                    <li class="list-group-item">T1-01</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light text-center">Table No: 6</li>
+                    <li class="list-group-item">T1-01</li>
+                    <li class="list-group-item">T1-01</li>
+                    <li class="list-group-item">T1-01</li>
+                    <li class="list-group-item">T1-01</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-success text-center">Table No: 7</li>
+                   <li class="list-group-item">T7-01 <span class="badge badge-success">Occupied</span></li>
+                   <li class="list-group-item">T7-02 <span class="badge badge-success">Occupied</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-success text-center">Table No: 8</li>
+                   <li class="list-group-item">T8-04 <span class="badge badge-success">Occupied</span></li>
+                   <li class="list-group-item">T8-04 <span class="badge badge-success">Occupied</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- New table  model-->
+        <div id="exampleModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Tables</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="formGroupExampleInput">Table Number</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="No of tables">
+                          </div>
+                          <div class="form-group">
+                            <label for="formGroupExampleInput2">Chairs</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Number of Chairs">
+                          </div>
+                           <div class="form-group">
+                            <button type="button" class="btn btn-lg btn-block btn-success" data-dismiss="modal">Add</button>
+                          </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- New table  model end-->
+
+        <!-- Accept order model-->
+        <div id="makeorder" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Place Order</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="formGroupExampleInput2">Persons</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Persons">
+                          </div>
+                        <div class="form-group">
+                            <h5>Main Course</h5>
+                            <table class="table">
+                                <tr>
+                                    <td class="text-left"><label class="form-check-label">Veg Kofta </label></td>
+                                    <td class="text-center"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Qty"></td>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" name="" id="" value=""></td>
+                                </tr>
+                                 <tr>
+                                    <td class="text-left"><label class="form-check-label">Veg Kadhai </label></td>
+                                    <td class="text-center"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Qty"></td>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" name="" id="" value=""></td>
+                                </tr>
+                            </table>
+                            <h5>Other</h5>
+                            <table class="table">
+                                <tr>
+                                    <td class="text-left"><label class="form-check-label">Roti </label></td>
+                                    <td class="text-center"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Qty"></td>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" name="" id="" value=""></td>
+                                </tr>
+                                 <tr>
+                                    <td class="text-left"><label class="form-check-label">Plain Roti </label></td>
+                                    <td class="text-center"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Qty"></td>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" name="" id="" value=""></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-lg btn-block btn-success" data-dismiss="modal">Place order</button>
+                    </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Accept order model end-->
+
+         <!-- make bill model-->
+        <div id="makebill" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Bill</h4><button type="button" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#makeorder">Add Menus</button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p> <b>Bill Number:</b> <span>000411</span> <span class="text-right"><b>Dated:</b> 01/20/2020 09:21pm </span></p>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Menu</td>
+                                    <td>Qty</td>
+                                    <td>Price</td>
+                                    <td>Amount</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Veg kofta</td>
+                                    <td>1</td>
+                                    <td>200</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Dal Fry</td>
+                                    <td>1</td>
+                                    <td>100</td>
+                                    <td>100</td>
+                                </tr>
+                                <tr>
+                                    <td>Roti</td>
+                                    <td>4</td>
+                                    <td>25</td>
+                                    <td>100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-lg btn-block btn-success" data-dismiss="modal">Complete order</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- make bill model end-->

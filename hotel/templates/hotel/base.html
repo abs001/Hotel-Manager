@@ -7,6 +7,11 @@
 </head>
 <body>
     {% include 'hotel/nav.html' %}
-    {% include 'hotel/menus.html' %}
+    {% if page_name == "home" %}
+        {% include 'hotel/home.html' %}
+    {% endif %}
+    {% if page_name == "menus" %}
+        {% include 'hotel/menus.html' %}
+    {% endif %}
 </body>
 </html>
