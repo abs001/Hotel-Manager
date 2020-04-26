@@ -1,16 +1,19 @@
-from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from django.urls import reverse
-
 from .forms import MenuForm
-from .models import MenuCategory, Menus
-from django.contrib import messages
+from .models import MenuCategory, Menus, Tables
 
 
 def home(request):
     template = loader.get_template("hotel/base.html")
-    context = {"page_name": "home"}
+    tables = Tables.objects.all()
+    occupied_tables = Tables.objects.filter(occupied=True)
+    occupancy = len(occupied_tables)/len(tables)*100
+    context = {
+        "page_name": "home",
+        "tables": tables,
+        "occupancy": occupancy
+    }
     return HttpResponse(template.render(context, request))
 
 
@@ -35,6 +38,15 @@ def add_menu(request):
             )
             menu_data.save()
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    except Exception as e:
+        raise e
 
+
+def add_table(request):
+    try:
+        chairs = request.POST["chairs"]
+        table = Tables(chairs=chairs)
+        table.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     except Exception as e:
         raise e

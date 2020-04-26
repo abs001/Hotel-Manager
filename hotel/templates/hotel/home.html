@@ -3,7 +3,7 @@
         <div>
             <p class="lead">Table occupancy</p>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 62%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">62%</div>
+                <div class="progress-bar" role="progressbar" style="width: {{ occupancy }}%;" aria-valuemax="100">{{ occupancy }}%</div>
             </div>
             <hr>
         </div>
@@ -12,83 +12,36 @@
                 <div class="text-right"><span>Tables on the floor </span> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">+</button></div>
                 <hr>
             </div>
-            <div class="col-md-3" data-toggle="modal" data-target="#makebill">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-success text-center">Table No: 1</li>
-                    <li class="list-group-item">T1-01 <span class="badge badge-success">Occupied</span></li>
-                    <li class="list-group-item">T1-02</li>
-                    </ul>
+            {% for tb in tables %}
+                <div class="col-md-3" data-toggle="modal" data-target="
+                    {% if tb.occupancy %}
+                        #makebill
+                    {% else %}
+                        #makeorder
+                    {% endif %}
+                ">
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item
+                        {% if tb.occupied %}
+                            bg-success
+                        {% else %}
+                            bg-warning
+                        {% endif %}
+                        text-center">Table No: {{ tb.id }}</li>
+                         <li class="list-group-item">Chairs: {{ tb.chairs }}</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card" data-toggle="modal" data-target="#makebill">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-success text-center">Table No: 2</li>
-                    <li class="list-group-item">T2-01 <span class="badge badge-success">Occupied</span></li>
-                    <li class="list-group-item">T2-02</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card" data-toggle="modal" data-target="#makeorder">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-light text-center">Table No: 3</li>
-                    <li class="list-group-item">T1-01</li>
-                    <li class="list-group-item">T1-01</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-success text-center">Table No: 4</li>
-                   <li class="list-group-item">T1-04 <span class="badge badge-success">Occupied</span></li>
-                   <li class="list-group-item">T1-04 <span class="badge badge-success">Occupied</span></li>
-                    <li class="list-group-item">T1-04</li>
-                    <li class="list-group-item">T1-04</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-light text-center">Table No: 5</li>
-                    <li class="list-group-item">T1-01</li>
-                    <li class="list-group-item">T1-01</li>
-                    <li class="list-group-item">T1-01</li>
-                    <li class="list-group-item">T1-01</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-light text-center">Table No: 6</li>
-                    <li class="list-group-item">T1-01</li>
-                    <li class="list-group-item">T1-01</li>
-                    <li class="list-group-item">T1-01</li>
-                    <li class="list-group-item">T1-01</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-success text-center">Table No: 7</li>
-                   <li class="list-group-item">T7-01 <span class="badge badge-success">Occupied</span></li>
-                   <li class="list-group-item">T7-02 <span class="badge badge-success">Occupied</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-success text-center">Table No: 8</li>
-                   <li class="list-group-item">T8-04 <span class="badge badge-success">Occupied</span></li>
-                   <li class="list-group-item">T8-04 <span class="badge badge-success">Occupied</span></li>
-                    </ul>
-                </div>
+            {% endfor %}
+<!--            <div class="col-md-3">-->
+<!--                <div class="card" data-toggle="modal" data-target="#makeorder">-->
+<!--                    <ul class="list-group list-group-flush">-->
+<!--                    <li class="list-group-item bg-light text-center">Table No: 3</li>-->
+<!--                    <li class="list-group-item">T1-01</li>-->
+<!--                    <li class="list-group-item">T1-01</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
         </div>
         <!-- New table  model-->
@@ -99,22 +52,16 @@
                         <h4 class="modal-title">Add Tables</h4>
                     </div>
                     <div class="modal-body">
-                        <form>
+                       <form action={% url 'add_table' %} method="post">
+                            {% csrf_token %}
                           <div class="form-group">
-                            <label for="formGroupExampleInput">Table Number</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="No of tables">
-                          </div>
-                          <div class="form-group">
-                            <label for="formGroupExampleInput2">Chairs</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Number of Chairs">
+                            <label for="chairs">Chairs</label>
+                            <input type="text" class="form-control" id="chairs" name="chairs" placeholder="Number of Chairs">
                           </div>
                            <div class="form-group">
-                            <button type="button" class="btn btn-lg btn-block btn-success" data-dismiss="modal">Add</button>
-                          </div>
+                            <input type="submit" class="btn btn-lg btn-block btn-success" value="Add">
+                           </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
