@@ -9,13 +9,13 @@ class Tables(models.Model):
 class MenuCategory(models.Model):
     def __str__(self):
         return self.category
-    category = models.TextField(max_length=100)
+    category = models.CharField(max_length=100, primary_key=True)
 
 
 class Menus(models.Model):
-    menu_name = models.TextField(max_length=200)
+    menu_name = models.TextField(max_length=200, verbose_name="Menu")
     menu_description = models.TextField()
-    menu_category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE)
+    menu_category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE, default="Other")
     menu_price = models.FloatField()
 
 
